@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
-	#include AbstractController::Translation
+	include CanCan::ControllerAdditions
+	include AbstractController::Translation
 	# Prevent CSRF attacks by raising an exception.
 	# For APIs, you may want to use :null_session instead.
 	# protect_from_forgery :null_session
@@ -38,5 +39,9 @@ class ApplicationController < ActionController::API
   	def authentication_error
   		render json: {error: 'unauthorized'}, status: 401
   	end
+
+  	rescue_from CanCan::AccessDenied do |exception|
+		redirect_to root_url
+	end
 
 end

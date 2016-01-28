@@ -1,4 +1,5 @@
 class ExercisesController < ApplicationController
+  #load_and_authorize_resource
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
   # GET /exercises
@@ -6,6 +7,7 @@ class ExercisesController < ApplicationController
   def index
     @exercises = Exercise.all
   end
+
 
   # GET /exercises/1
   # GET /exercises/1.json

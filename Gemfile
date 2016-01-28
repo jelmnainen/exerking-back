@@ -27,6 +27,7 @@ gem 'rspec-rails', '~> 3.0'
 gem 'rails-api', '~> 0.4.0'
 gem 'active_model_serializers', '~> 0.8.3' # NOTE: not the 0.9
 gem 'devise', '~> 3.4.1'
+gem "cancan"
 
 
 # Use ActiveModel has_secure_password

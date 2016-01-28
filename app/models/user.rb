@@ -9,11 +9,17 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :email, presence: true
 
+  def teacher?
+  	teacher
+  end
+
   private
 
   def update_access_token!
   	self.access_token = "#{self.id}:#{Devise.friendly_token}"
   	save
   end
+
+  
 
 end
