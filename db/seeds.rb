@@ -1,7 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+t = Time.now
+
+e1 = Exercise.create title: "Rails Datetime pt 1", text: "Learn how to use Rails Datetime", deadline: t.advance(hours: 2)
+e2 = Exercise.create title: "Rails Datetime pt 2", text: "Learn how to create a DatePicker", deadline: t.advance(days: 6)
+e3 = Exercise.create title: "Rails Datetime pt 3", text: "Now you know enough to create your own Google Calendar App! Go and do it!", deadline: t.advance(days: 12)
+e4 = Exercise.create title: "Become a Rails Pro", text: "Do or do not. There is no try!"
