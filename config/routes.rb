@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resource :login, only: [:create], controller: :sessions
 
-  resources :exercises
+  resources :exercises, defaults: { format: :json }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
