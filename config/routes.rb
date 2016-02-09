@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :user, only: []
-
-  resource :login, only: [:create], controller: :sessions
+  devise_for :user, :controllers => {sessions: 'sessions'}
 
   resources :exercises
 
