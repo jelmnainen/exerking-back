@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   after_create :update_access_token!
 
   #validates :username, presence: true
-  #validates :email, presence: true
+  validates :email, presence: true
 
   def teacher?
   	teacher
