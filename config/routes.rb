@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :user, :controllers => {sessions: 'sessions'}
+  devise_for :user, controllers: {sessions: 'sessions', registrations: 'registrations'}
 
   resources :exercises
 
