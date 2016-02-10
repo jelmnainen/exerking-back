@@ -13,12 +13,7 @@ class SessionsController < Devise::SessionsController
       invalid_login_attempt
     end
   end
-
-  def destroy
-    puts 'destroy'
-    byebug
-  end
-
+  
   private
 
   def invalid_login_attempt
