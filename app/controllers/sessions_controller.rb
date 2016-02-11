@@ -8,7 +8,6 @@ class SessionsController < Devise::SessionsController
 
     if @user.valid_password?(params[:password])
       sign_in :user, @user
-      puts @user.inspect
       render json: @user, root: nil
     else
       invalid_login_attempt
