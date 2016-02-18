@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160218124157) do
     t.integer  "exercise_id",                    null: false
     t.string   "feedback"
     t.boolean  "feedback_asked", default: false
-    t.boolean  "done",           default: false
+    t.boolean  "done",           default: true
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
