@@ -5,13 +5,14 @@ class ExercisesController < ApplicationController
   # GET /exercises
   # GET /exercises.json
   def index
-    @exercises = Exercise.all
+    render json: Exercise.all
   end
 
 
   # GET /exercises/1
   # GET /exercises/1.json
   def show
+    render json: @exercise
   end
 
   # GET /exercises/new

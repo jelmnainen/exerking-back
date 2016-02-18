@@ -20,6 +20,10 @@ class ApplicationController < ActionController::API
 
   	private
 
+		def default_serializer_options
+			{root: false}
+		end
+
   	def authenticate_with_auth_token auth_token
   		unless auth_token.include?(':')
   			authentication_error
