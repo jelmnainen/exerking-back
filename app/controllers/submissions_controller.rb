@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :update]
+  load_and_authorize_resource
 
   def create
     @submission = Submission.new(submission_params)
@@ -11,13 +12,11 @@ class SubmissionsController < ApplicationController
   end
 
   def index
-    #authorization for teacher IS MISSING
     @submissions = Submission.all
     render json: @submissions, status: :ok
   end
 
   def show
-    #authorization missing
     render json: @submission, status: :ok
   end
 

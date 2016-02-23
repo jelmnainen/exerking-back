@@ -45,7 +45,7 @@ class ApplicationController < ActionController::API
   	end
 
   	rescue_from CanCan::AccessDenied do |exception|
-		redirect_to root_url
-	end
+			render json: {error: exception.message}, status: :forbidden
+		end
 
 end
