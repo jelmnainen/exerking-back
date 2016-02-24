@@ -13,8 +13,15 @@ class SubmissionsController < ApplicationController
   end
 
   def index
-    if params[:user_id]
+    if params[:exercise_id] and params[:user_id]
+      @submissions = Submission.where(
+        exercise_id: params[:exercise_id],
+        user_id: params[:user_id]
+      )
+    elsif params[:user_id]
       @submissions = Submission.where user_id: params[:user_id]
+    elsif params[:exercise_id]
+      @submissions = Submission.where exercise_id: params[:exercise_id]
     else
       @submissions = Submission.all
     end

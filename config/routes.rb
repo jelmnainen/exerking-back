@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: 'sessions', registrations: 'registrations'}
 
-  resources :exercises
-
   resources :submissions, only: [:index, :create, :show, :update]
 
   resources :users do
+    resources :submissions, only: [:index]
+  end
+
+  resources :exercises do
     resources :submissions, only: [:index]
   end
 
