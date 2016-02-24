@@ -8,8 +8,8 @@ class ApplicationController < ActionController::API
 	respond_to :json
 
 	def authenticate_user_from_token!
-  		auth_header = request.headers['Authorization'] || ""
-  		auth_type, auth_token = auth_header.split(" ")
+    auth_header = request.headers['Authorization'] || ""
+    auth_type, auth_token = auth_header.split(" ")
 
 		if auth_token && auth_type == "Bearer"
 			authenticate_with_auth_token auth_token
@@ -18,34 +18,34 @@ class ApplicationController < ActionController::API
 		end
 	end
 
-  	private
+  private
 
-		def default_serializer_options
-			{root: false}
-		end
+  def default_serializer_options
+    {root: false}
+  end
 
-  	def authenticate_with_auth_token auth_token
-  		unless auth_token.include?(':')
-  			authentication_error
-  			return
-  		end
+  def authenticate_with_auth_token auth_token
+    unless auth_token.include?(':')
+      authentication_error
+      return
+    end
 
-  		user_id = auth_token.split(':').first
-  		user = User.where(id: user_id).first
+    user_id = auth_token.split(':').first
+    user = User.where(id: user_id).first
 
-  		if user && Devise.secure_compare(user.access_token, auth_token)
-  			sign_in user, store: false
-  		else
-  			authentication_error
-  		end
-  	end
+    if user && Devise.secure_compare(user.access_token, auth_token)
+      sign_in user, store: false
+    else
+      authentication_error
+    end
+  end
 
-  	def authentication_error
-  		render json: {error: 'unauthorized'}, status: 401
-  	end
+  def authentication_error
+    render json: {error: 'unauthorized'}, status: 401
+  end
 
-  	rescue_from CanCan::AccessDenied do |exception|
-		redirect_to root_url
-	end
+  rescue_from CanCan::AccessDenied do |exception|
+    render json: {error: exception.message}, status: :forbidden
+  end
 
 end

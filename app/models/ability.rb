@@ -5,6 +5,8 @@ class Ability
       user ||= User.new # guest user (not logged in)
       if user.teacher?
         can :manage, :all
+      else
+        can :manage, Submission, :user_id => user.id
       end
 
   end
