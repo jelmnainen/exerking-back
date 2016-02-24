@@ -1,13 +1,17 @@
 class ExercisesController < ApplicationController
   #load_and_authorize_resource
-  before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+  before_action :set_exercise, only: [:show, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /exercises
   # GET /exercises.json
   def index
-    render json: Exercise.all
+    @exercises = Exercise.all
+    @exercises.each do |exercise|
+      authorize! :read, exercise
+    end
+    render json: @exercises
   end
-
 
   # GET /exercises/1
   # GET /exercises/1.json
@@ -19,6 +23,7 @@ class ExercisesController < ApplicationController
   # POST /exercises.json
   def create
     @exercise = Exercise.new(exercise_params)
+    authorize! :create, @exercise
     if @exercise.save
        render json: @exercise, status: :created
     else

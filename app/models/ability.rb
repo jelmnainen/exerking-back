@@ -7,7 +7,7 @@ class Ability
         can :manage, :all
       else
         can :manage, Submission, :user_id => user.id
+        can :read, Exercise
       end
-
   end
 end
