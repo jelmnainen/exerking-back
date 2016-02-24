@@ -15,15 +15,6 @@ class ExercisesController < ApplicationController
     render json: @exercise
   end
 
-  # GET /exercises/new
-  def new
-    @exercise = Exercise.new
-  end
-
-  # GET /exercises/1/edit
-  def edit
-  end
-
   # POST /exercises
   # POST /exercises.json
   def create
@@ -38,14 +29,10 @@ class ExercisesController < ApplicationController
   # PATCH/PUT /exercises/1
   # PATCH/PUT /exercises/1.json
   def update
-    respond_to do |format|
-      if @exercise.update(exercise_params)
-        format.html { redirect_to @exercise, notice: 'Exercise was successfully updated.' }
-        format.json { render :show, status: :ok, location: @exercise }
-      else
-        format.html { render :edit }
-        format.json { render json: @exercise.errors, status: :unprocessable_entity }
-      end
+    if @exercise.update(exercise_params)
+      render json: @exercise, status: :ok
+    else
+      render json: @exercise.errors, status: :unprocessable_entity
     end
   end
 
@@ -53,10 +40,7 @@ class ExercisesController < ApplicationController
   # DELETE /exercises/1.json
   def destroy
     @exercise.destroy
-    respond_to do |format|
-      format.html { redirect_to exercises_url, notice: 'Exercise was successfully destroyed.' }
       format.json { head :no_content }
-    end
   end
 
   private
