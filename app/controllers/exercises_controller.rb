@@ -28,15 +28,10 @@ class ExercisesController < ApplicationController
   # POST /exercises.json
   def create
     @exercise = Exercise.new(exercise_params)
-
-    respond_to do |format|
-      if @exercise.save
-        format.html { redirect_to @exercise, notice: 'Exercise was successfully created.' }
-        format.json { render :show, status: :created, location: @exercise }
-      else
-        format.html { render :new }
-        format.json { render json: @exercise.errors, status: :unprocessable_entity }
-      end
+    if @exercise.save
+       render json: @exercise, status: :created
+    else
+       render json: @exercise.errors, status: :unprocessable_entity
     end
   end
 
@@ -72,6 +67,6 @@ class ExercisesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exercise_params
-      params.require(:exercise).permit(:text)
+      params.permit(:title, :text, :deadline)
     end
 end
