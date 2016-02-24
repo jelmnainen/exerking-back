@@ -15,42 +15,24 @@ class ExercisesController < ApplicationController
     render json: @exercise
   end
 
-  # GET /exercises/new
-  def new
-    @exercise = Exercise.new
-  end
-
-  # GET /exercises/1/edit
-  def edit
-  end
-
   # POST /exercises
   # POST /exercises.json
   def create
     @exercise = Exercise.new(exercise_params)
-
-    respond_to do |format|
-      if @exercise.save
-        format.html { redirect_to @exercise, notice: 'Exercise was successfully created.' }
-        format.json { render :show, status: :created, location: @exercise }
-      else
-        format.html { render :new }
-        format.json { render json: @exercise.errors, status: :unprocessable_entity }
-      end
+    if @exercise.save
+       render json: @exercise, status: :created
+    else
+       render json: @exercise.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /exercises/1
   # PATCH/PUT /exercises/1.json
   def update
-    respond_to do |format|
-      if @exercise.update(exercise_params)
-        format.html { redirect_to @exercise, notice: 'Exercise was successfully updated.' }
-        format.json { render :show, status: :ok, location: @exercise }
-      else
-        format.html { render :edit }
-        format.json { render json: @exercise.errors, status: :unprocessable_entity }
-      end
+    if @exercise.update(exercise_params)
+      render json: @exercise, status: :ok
+    else
+      render json: @exercise.errors, status: :unprocessable_entity
     end
   end
 
@@ -58,10 +40,7 @@ class ExercisesController < ApplicationController
   # DELETE /exercises/1.json
   def destroy
     @exercise.destroy
-    respond_to do |format|
-      format.html { redirect_to exercises_url, notice: 'Exercise was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   private
@@ -72,6 +51,6 @@ class ExercisesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exercise_params
-      params.require(:exercise).permit(:text)
+      params.permit(:title, :text, :deadline)
     end
 end
