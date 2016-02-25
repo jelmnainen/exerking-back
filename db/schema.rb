@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218124157) do
+ActiveRecord::Schema.define(version: 20160225125627) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "title"
     t.datetime "deadline"
+    t.boolean  "file_upload", default: false
   end
 
   create_table "submissions", force: :cascade do |t|
