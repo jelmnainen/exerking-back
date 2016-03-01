@@ -1,5 +1,5 @@
 class ExerciseSerializer < ActiveModel::Serializer
 
-  attributes :id, :title, :text, :deadline
+  attributes :id, :title, :text, :deadline, :file_upload
 
 end
