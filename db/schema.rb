@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20160225125627) do
     t.boolean  "done",           default: true
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.binary   "data"
+    t.string   "filename"
   end
 
   create_table "users", force: :cascade do |t|
