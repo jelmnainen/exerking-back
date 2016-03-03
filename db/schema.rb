@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225125627) do
+ActiveRecord::Schema.define(version: 20160301135401) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "text"
@@ -30,7 +30,10 @@ ActiveRecord::Schema.define(version: 20160225125627) do
     t.boolean  "done",           default: true
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.integer  "superseded_by"
   end
+
+  add_index "submissions", ["superseded_by"], name: "index_submissions_on_superseded_by", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
