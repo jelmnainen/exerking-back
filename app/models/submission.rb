@@ -2,6 +2,8 @@ class Submission < ActiveRecord::Base
   belongs_to :user, dependent: :destroy
   belongs_to :exercise, dependent: :destroy
 
+  default_scope { order(created_at: :desc) }
+
   validates :user_id, presence: true
   validates :exercise_id, presence: true
   validate :deadline_expired, on: :create
