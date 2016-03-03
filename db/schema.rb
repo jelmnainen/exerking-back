@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20160301135401) do
 
+
   create_table "exercises", force: :cascade do |t|
     t.string   "text"
     t.datetime "created_at",                  null: false
@@ -31,6 +32,8 @@ ActiveRecord::Schema.define(version: 20160301135401) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "superseded_by"
+    t.string   "file_content"
+    t.string   "file_type"
   end
 
   add_index "submissions", ["superseded_by"], name: "index_submissions_on_superseded_by", unique: true

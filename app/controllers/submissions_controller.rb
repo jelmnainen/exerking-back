@@ -46,7 +46,7 @@ class SubmissionsController < ApplicationController
 
   private
   def submission_params
-    params.permit(:user_id, :exercise_id, :done, :feedback, :feedback_asked)
+    params.permit(:user_id, :exercise_id, :done, :feedback, :feedback_asked, :file_content, :file_type)
   end
 
   def set_submission
