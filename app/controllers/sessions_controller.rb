@@ -8,7 +8,7 @@ class SessionsController < Devise::SessionsController
 
     if @user.valid_password?(params[:password])
       sign_in :user, @user
-      render json: @user, root: nil
+      render json: @user, serializer: AuthenticatedUserSerializer
     else
       invalid_login_attempt
     end
