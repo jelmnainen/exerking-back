@@ -1,3 +1,5 @@
+require 'base64'
+
 class Submission < ActiveRecord::Base
   belongs_to :user, dependent: :destroy
   belongs_to :exercise, dependent: :destroy
@@ -8,6 +10,7 @@ class Submission < ActiveRecord::Base
   validates :exercise_id, presence: true
   validate :deadline_expired, on: :create
 
+  before_create :decode_file!
   after_create :supersede!
 
   private
@@ -25,6 +28,10 @@ class Submission < ActiveRecord::Base
       previous.superseded_by = id
       previous.save!
     end
+  end
+
+  def decode_file!
+    self.file_content = Base64.decode64(self.file_content)
   end
 
 end
