@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301135401) do
-
+ActiveRecord::Schema.define(version: 20160309132924) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "text"
@@ -32,7 +31,7 @@ ActiveRecord::Schema.define(version: 20160301135401) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "superseded_by"
-    t.string   "file_content"
+    t.binary   "file_content"
     t.string   "file_type"
   end
 
