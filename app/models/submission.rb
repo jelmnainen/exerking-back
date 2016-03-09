@@ -31,7 +31,7 @@ class Submission < ActiveRecord::Base
   end
 
   def decode_file!
-    self.file_content = Base64.decode64(self.file_content)
+    self.file_content = Base64.decode64(file_content) unless file_content.nil?
   end
 
 end
