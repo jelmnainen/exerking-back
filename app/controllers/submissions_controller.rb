@@ -1,5 +1,5 @@
 class SubmissionsController < ApplicationController
-  before_action :set_submission, only: [:show, :update]
+  before_action :set_submission, only: [:show, :update, :file]
   load_and_authorize_resource
 
   def create
@@ -41,6 +41,14 @@ class SubmissionsController < ApplicationController
       render json: @submission, status: :ok
     else
       render json: @submission.errors, status: :unprocessable_entity
+    end
+  end
+
+  def file
+    if @submission.file_content.nil?
+      render status: :not_found
+    else
+      send_data @submission.file_content, type: @submission.file_type, disposition: 'inline'
     end
   end
 
