@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: 'sessions', registrations: 'registrations'}
 
-  resources :submissions, only: [:index, :create, :show, :update]
+  resources :submissions, only: [:index, :create, :show, :update] do
+    get 'file', on: :member
+  end
 
   resources :users do
     resources :submissions, only: [:index]
