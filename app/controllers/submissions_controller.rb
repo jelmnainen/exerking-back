@@ -37,6 +37,7 @@ class SubmissionsController < ApplicationController
   end
 
   def update
+
     if @submission.update(submission_params)
       render json: @submission, status: :ok
     else
