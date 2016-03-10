@@ -46,7 +46,7 @@ class SubmissionsController < ApplicationController
 
   def file
     if @submission.file_content.nil?
-      render status: :not_found
+      head status: :not_found
     else
       send_data @submission.file_content, type: @submission.file_type, disposition: 'inline'
     end
