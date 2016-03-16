@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309132924) do
+ActiveRecord::Schema.define(version: 20160316143639) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "text"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160309132924) do
     t.integer  "superseded_by"
     t.binary   "file_content"
     t.string   "file_type"
+    t.string   "file_secret"
   end
 
   add_index "submissions", ["superseded_by"], name: "index_submissions_on_superseded_by", unique: true

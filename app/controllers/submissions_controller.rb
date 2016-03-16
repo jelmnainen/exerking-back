@@ -1,6 +1,8 @@
 class SubmissionsController < ApplicationController
+  skip_before_action :authenticate_user_from_token!, only: [:file]
   before_action :set_submission, only: [:show, :update, :file]
   load_and_authorize_resource
+  skip_authorize_resource only: :file
 
   def create
     @submission = Submission.new(submission_params)
@@ -45,10 +47,17 @@ class SubmissionsController < ApplicationController
   end
 
   def file
+
     if @submission.file_content.nil?
       head status: :not_found
+    end
+
+    secret_token = params[:secret]
+
+    if Devise.secure_compare(@submission.file_secret, secret_token)
+        send_data @submission.file_content, type: @submission.file_type, disposition: 'inline'
     else
-      send_data @submission.file_content, type: @submission.file_type, disposition: 'inline'
+      render json: {error: 'forbidden'}, status: :forbidden
     end
   end
 
