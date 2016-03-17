@@ -47,7 +47,6 @@ class SubmissionsController < ApplicationController
   end
 
   def file
-
     if @submission.file_content.nil?
       head status: :not_found
     end
