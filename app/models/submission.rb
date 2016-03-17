@@ -10,7 +10,7 @@ class Submission < ActiveRecord::Base
   validates :exercise_id, presence: true
   validate :deadline_expired, on: :create
 
-  before_create :decode_file!
+  before_create :decode_file!, :generate_file_token!
   after_create :supersede!
 
   private
@@ -32,6 +32,10 @@ class Submission < ActiveRecord::Base
 
   def decode_file!
     self.file_content = Base64.decode64(file_content) unless file_content.nil?
+  end
+
+  def generate_file_token!
+    self.file_secret = Devise.friendly_token unless file_content.nil?
   end
 
 end
