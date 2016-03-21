@@ -45,6 +45,7 @@ gem 'rack-cors', :require => 'rack/cors'
 group :production do
   # Use postgreSQL for production DB
   gem 'pg'
+  gem 'puma'
 end
 
 group :development, :test do
