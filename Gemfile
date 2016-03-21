@@ -46,6 +46,7 @@ group :production do
   # Use postgreSQL for production DB
   gem 'pg'
   gem 'puma'
+  gem 'rails_stdout_logging'
 end
 
 group :development, :test do
