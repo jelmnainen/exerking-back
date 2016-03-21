@@ -32,6 +32,6 @@ module Exerking
       end
     end
 
-
+    config.assets.enabled = false
   end
 end
