@@ -13,6 +13,20 @@ Then run
     bundle install
     rake db:migrate
     
-## Running server
+## Running devserver
     rails s
-  
+    
+## Running production server
+Generate Devise secret key 
+
+    bundle exec rake secret
+
+copy the key and insert the following line into config/initializers/devise.rb, inside the Devise.setup do |config| block:
+
+    config.secret_key=generatedKey
+
+Also, set the config.mailerSender. Then you can do
+
+    rails s -e production -p [portnumber]
+
+where you can switch [portnumber] to the port wher you wish to run the API.
