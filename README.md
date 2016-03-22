@@ -9,5 +9,7 @@ Excercise marking system backend
 ## Installation
     bundle install
     rake db:migrate
+    
+## Running server
     rails s
   
