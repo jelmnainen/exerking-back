@@ -44,7 +44,7 @@ class CategoriesController < ApplicationController
   # DELETE /category/1.json
   def destroy
     @category.destroy
-    head :no_content
+    render json: @category, status: :ok
   end
 
   private
