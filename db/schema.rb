@@ -13,6 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20160330102256) do
 
+  create_table "batches", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "deadline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
@@ -27,6 +34,7 @@ ActiveRecord::Schema.define(version: 20160330102256) do
     t.string   "title"
     t.datetime "deadline"
     t.boolean  "file_upload", default: false
+    t.integer  "batch_id"
     t.integer  "category_id"
   end
 
