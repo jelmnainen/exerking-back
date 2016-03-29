@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20160330102256) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "title"
-    t.datetime "deadline"
     t.boolean  "file_upload", default: false
     t.integer  "batch_id"
     t.integer  "category_id"
