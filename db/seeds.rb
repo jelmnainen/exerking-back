@@ -1,8 +1,8 @@
 t = Time.now
 
-cat1 = Category.create title: "Oliot"
-cat2 = Category.create title: "Loopit"
-cat3 = Category.create title: "Funktiot"
+cat1 = Category.create title: "Oliot", color: "red"
+cat2 = Category.create title: "Loopit", color: "teal"
+cat3 = Category.create title: "Funktiot", color: "pink"
 
 e1 = Exercise.create title: "Rails Datetime pt 1", text: "Learn how to use Rails Datetime", deadline: t.advance(hours: 2), file_upload: true, category: cat1
 e2 = Exercise.create title: "Rails Datetime pt 2", text: "Learn how to create a DatePicker", deadline: t.advance(days: 6), file_upload: false, category: cat2
