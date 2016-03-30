@@ -4,5 +4,6 @@ class Exercise < ActiveRecord::Base
   belongs_to :category
   validates :title, presence: true
   validates :text, presence: true
+  validates :batch, presence: true
   
 end
