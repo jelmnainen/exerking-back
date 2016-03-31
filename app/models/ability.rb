@@ -9,6 +9,7 @@ class Ability
         can :manage, Submission, :user_id => user.id
         can :read, Exercise
         can :read, Category
+        can :read, Batch
       end
   end
 end
