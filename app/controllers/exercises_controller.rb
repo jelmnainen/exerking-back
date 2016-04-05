@@ -45,7 +45,7 @@ class ExercisesController < ApplicationController
   # DELETE /exercises/1.json
   def destroy
     @exercise.destroy
-    head :no_content
+    render json: @exercise
   end
 
   private
