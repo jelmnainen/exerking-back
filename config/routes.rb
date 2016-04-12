@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {sessions: 'sessions', registrations: 'registrations'}
+  devise_for :users,
+    only: [:sessions, :registrations],
+    controllers: {
+      sessions: 'sessions',
+      registrations: 'registrations'
+    }
 
   resources :submissions, only: [:index, :create, :show, :update] do
     get 'file', on: :member
   end
 
-  resources :users do
+  resources :users, only: [:index] do
     resources :submissions, only: [:index]
+    post 'password', on: :collection, to: 'users#reset_password'
   end
 
   resources :exercises do
