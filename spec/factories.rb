@@ -12,6 +12,10 @@ FactoryGirl.define do
     end
   end
 
+  factory :category do
+    title 'Category'
+  end
+
   factory :exercise do
     batch
     title 'Exercise 1'
