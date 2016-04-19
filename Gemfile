@@ -22,5 +22,9 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
-  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 3.4'
+  gem 'api_matchers'
+  gem 'spring-commands-rspec'
+  gem 'guard-rspec'
 end
