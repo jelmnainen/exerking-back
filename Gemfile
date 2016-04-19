@@ -19,6 +19,10 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'simplecov', :require => false
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'

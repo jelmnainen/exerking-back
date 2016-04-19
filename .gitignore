@@ -6,3 +6,4 @@
 /.bundle/
 Gemfile.lock
 .byebug_history
+/coverage/
