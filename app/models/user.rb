@@ -14,6 +14,12 @@ class User < ActiveRecord::Base
   	teacher
   end
 
+  def reset_password!
+    self.password = Devise.friendly_token.slice(0, 12)
+    self.password_confirmation = self.password
+    save!
+  end
+
   private
 
   def update_access_token!
