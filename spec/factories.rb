@@ -20,6 +20,17 @@ FactoryGirl.define do
     batch
     title 'Exercise 1'
     text 'Description'
+
+    factory :exercise_with_submissions do
+      transient do
+        user { create(:user) }
+        submissions_count 1
+      end
+
+      after(:create) do |exercise, evaluator|
+        create_list(:submission, evaluator.submissions_count, exercise: exercise, user: evaluator.user)
+      end
+    end
   end
 
   factory :batch do
@@ -38,6 +49,20 @@ FactoryGirl.define do
       after(:create) do |batch, evaluator|
         create_list(:exercise, evaluator.exercises_count, batch: batch)
       end
+    end
+  end
+
+  factory :submission do
+    user
+    exercise
+
+    trait :feedback do
+      feedback 'Well done'
+    end
+
+    trait :file do
+      file_type 'text/plain'
+      file_content 'Y29udGVudAo='
     end
   end
 end
