@@ -16,7 +16,7 @@ class Submission < ActiveRecord::Base
   private
 
   def deadline_expired
-    if exercise.batch.deadline? and exercise.batch.deadline < Time.now
+    if exercise and exercise.batch and exercise.batch.deadline? and exercise.batch.deadline < Time.now
       errors.add('exercise_id', 'Deadline has expired.')
     end
   end
