@@ -48,7 +48,7 @@ class SubmissionsController < ApplicationController
 
   def file
     if @submission.file_content.nil?
-      head status: :not_found
+      return head status: :not_found
     end
 
     secret_token = params[:secret]
