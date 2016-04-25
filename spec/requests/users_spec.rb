@@ -13,6 +13,19 @@ RSpec.describe 'GET /users' do
     include_examples 'unauthorized response'
   end
 
+  context 'when auth token is invalid' do
+    let(:auth) { { authorization: 'Bearer invalid' } }
+    include_examples 'unauthorized response'
+  end
+
+  context 'when auth token is incorrect' do
+    let(:auth) do
+      user = create(:teacher)
+      { authorization: "Bearer #{user.id}:incorrect" }
+    end
+    include_examples 'unauthorized response'
+  end
+
   context 'when logged in as teacher' do
     let(:auth) { teacher_auth }
     include_examples 'ok collection response'
