@@ -18,7 +18,7 @@ class SessionsController < Devise::SessionsController
 
   def invalid_login_attempt
     warden.custom_failure!
-    render json: { message: "Bad username or password" }, status: :unprocessable_entity
+    render json: { errors: { email: ["Bad username or password"] } } , status: :unprocessable_entity
   end
 
 end
