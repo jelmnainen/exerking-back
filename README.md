@@ -9,6 +9,9 @@ Excercise marking system backend
 ## Architectural documentation
 See [ARCHIDOC.md](https://github.com/jelmnainen/exerking-back/blob/master/ARCHIDOC.md)
 
+## Testing documentation
+See [TESTINGDOC.md](https://github.com/jelmnainen/exerking-back/blob/master/TESTINGDOC.md)
+
 ## Installation
 You must have Ruby (at least 2.3.0 works) and rails ( at least 4.2.6 works) installed.
 Then run
